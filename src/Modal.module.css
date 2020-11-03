@@ -1,0 +1,27 @@
+.Modal {
+    box-sizing: border-box;
+	position: relative;
+	padding: 10px;
+	border: 1px solid black;
+	border-radius: 4px;
+	background: white;
+	width: 700px;
+	height: 350px;
+    z-index: 100;
+	overflow: scroll;
+	
+}
+.Modal::-webkit-scrollbar {
+    display: none;
+}
+
+.Triangle {
+	width: 0;
+	height: 0;
+	border-style: solid;
+	border-width: 10px 10px 0 0;
+	border-color:#000000 transparent transparent transparent;
+    margin-left: 20px;
+    
+    
+  }
