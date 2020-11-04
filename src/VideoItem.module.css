@@ -1,0 +1,25 @@
+.VedioContainer 
+{
+    display:flex;
+     flex-direction:column;
+     flex-wrap:wrap, 
+}
+
+.Img 
+{
+    height:150px;
+    width:150px
+}
+
+.Title
+{
+    width:150px;
+    border-bottom : 1px solid;
+    padding-bottom: 5px;
+    padding-top: 10px;
+
+}
+.Year
+{
+    
+}

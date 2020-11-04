@@ -25,7 +25,7 @@ const SearchBar =(props)=>
                 height:'20px',
                 width:'20px'
             }}></img>
-
+<button></button>
             </div>
         </div>
     );

@@ -1,20 +1,21 @@
 import React from 'react';
+import classes from './VideoItem.module.css';
 const VideoItem =({video})=>
 {  
+let publishTime= video.snippet.publishTime;
+let year = publishTime.substring(0,4);
+let numberOfYears = 2020-year;
+if (numberOfYears==0)
+{
+    numberOfYears=1;
+
+}
 
     return (
-         <div style={{display:'flex', flexDirection:'column',flexWrap:'wrap', justifyContent:'space-between' 
-        }}>
-              <img style={{height:'150px',width:'150px'}} src={video.snippet.thumbnails.medium.url}/>
-              <div 
-              style={{
-              width: '150px',
-              fontSize: '12px',
-              whiteSpace: 'nowraps', 
-              height: '30px', 
-              textOverflow: 'ellipsis', 
-              border:'1px solid #ffffff'
-             }}>{video.snippet.description}</div>
+         <div className={classes.VedioContainer}>
+              <img className={classes.Img}  src={video.snippet.thumbnails.medium.url}/>
+              <div className={classes.Title}>{video.snippet.channelTitle}</div>
+             <div className={classes.Years}> <h6>{numberOfYears} Years </h6></div>
         </div>
       
     );
