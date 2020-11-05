@@ -17,6 +17,11 @@
     border-bottom : 1px solid;
     padding-bottom: 5px;
     padding-top: 10px;
+    overflow: hidden;
+    /* overflow: auto; */
+    text-overflow: ellipsis;
+    overflow-wrap: break-word;
+    white-space: nowrap;
 
 }
 .Year

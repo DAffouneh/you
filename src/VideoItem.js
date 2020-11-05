@@ -1,5 +1,6 @@
 import React from 'react';
 import classes from './VideoItem.module.css';
+
 const VideoItem =({video})=>
 {  
 let publishTime= video.snippet.publishTime;
@@ -15,7 +16,7 @@ if (numberOfYears==0)
          <div className={classes.VedioContainer}>
               <img className={classes.Img}  src={video.snippet.thumbnails.medium.url}/>
               <div className={classes.Title}>{video.snippet.channelTitle}</div>
-             <div className={classes.Years}> <h6>{numberOfYears} Years </h6></div>
+             <div className={classes.Years}> <h6>{numberOfYears} Year ago </h6></div>
         </div>
       
     );

@@ -6,7 +6,7 @@ import axios from 'axios';
 import VideoList from './VideoList';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import Spinner from './Spinner';
-import YouTube from './yyy.png';
+import YouTube from './youtube.png';
 const App = () => {
 const KEY="AIzaSyBQhF-o7QUHFDeMwUYyBqdZ5gOv78qqMK4";
 const[pageToken,setPageToken]=useState("CAoQAA");
@@ -61,6 +61,7 @@ const spinner= <Spinner></Spinner>
   return (
     <div> 
     <div style={{paddingLeft:'55px'}}>
+
       <Modal  show={show} modalClosed={modalremovalHandler} >
      <SearchBar clickSearchHandeler={searchHandler}></SearchBar>
        <InfiniteScroll
@@ -70,15 +71,15 @@ const spinner= <Spinner></Spinner>
         hasMore={true}
         loader={spinner}
         scrollThreshold={0.9}>
-          <div style={{height:'auto', overflow:"visible"}}>
           <VideoList videos={videos}/>  
-          </div>
+       
 
         </InfiniteScroll>
         </Modal>
+
     </div>
    
-    <div>
+    <div style={{marginTop:'30px'}}>
     <img onClick={ModalShow} src={YouTube} alt="search" style={{
                 paddingLeft:'50px',
                 height:'50px',
