@@ -1,13 +1,17 @@
 import {useState} from 'react';
 import Search from './search.png';
 import classes from './SearchBar.module.css';
-import cancle from './close.jpg';
+import cancel from './error.png';
 const SearchBar =(props)=>
 {
     const[term,setTerm]=useState("Tap to search...");
+    const[x,setX]=useState(false);
     const changeHandel =(event)=>
     {
         setTerm(event.target.value);
+        setX(true);
+
+    
 
     }
     const clickHandel=(event)=>{
@@ -17,23 +21,32 @@ const SearchBar =(props)=>
 
     }
 
-    return (
-        <div style={{display:'flex', flexDirection:'row'}}> 
-        
-        <input  style={{width:'500px',
-            border: '0',
-            borderBottom: '1px solid',
-            marginBottom: '10px',
-            paddingBottom: '5px',
-            marginRight: '20px'
-        }} type="text" placeholder={term} onChange={changeHandel} 
-                ></input>
+  const showXHandler =()=>
+  {
+    setTerm("Tap to search...");
+    setX(false)
+  }
 
-            <div onClick={clickHandel}>
-            <img src={Search} alt="search" style={{
-                height:'20px',
-                width:'20px'
-            }}></img>
+
+    let showX=null
+if (x)
+{
+    showX=<div><img src={cancel} alt="cancel" style={{
+                height:'10px',
+                width:'10px'
+            }}
+            onClick={showXHandler}
+            
+            ></img></div>
+
+}
+    return (
+        <div className={classes.Div}> 
+        <input  className={classes.Input} type="text" placeholder={term} onChange={changeHandel=> setX(true)} 
+                ></input>
+        
+            <div >
+           <button className={classes.Button} onClick={clickHandel} >Search</button>
             </div>
         </div>
     );

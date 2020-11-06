@@ -1,4 +1,3 @@
-import './App.css';
 import {useState,useEffect, version} from 'react';
 import Modal from './Modal';
 import SearchBar from './SearchBar';
@@ -7,8 +6,9 @@ import VideoList from './VideoList';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import Spinner from './Spinner';
 import YouTube from './youtube.png';
+import classes from './App.module.css';
 const App = () => {
-const KEY="AIzaSyBQhF-o7QUHFDeMwUYyBqdZ5gOv78qqMK4";
+const KEY="AIzaSyCrcW78RTPEvZkIHjv83vVbfg44ikhAFgw";
 const[pageToken,setPageToken]=useState("CAoQAA");
 const[videos,setVideos]=useState([]);
 const[term,setTerm]=useState("");
@@ -59,18 +59,20 @@ const modalremovalHandler =()=>
 }
 const spinner= <Spinner></Spinner>
   return (
-    <div> 
-    <div style={{paddingLeft:'55px'}}>
+    <div className={classes.OuterDiv}> 
+    <div className={classes.InnerDiv}>
 
       <Modal  show={show} modalClosed={modalremovalHandler} >
      <SearchBar clickSearchHandeler={searchHandler}></SearchBar>
        <InfiniteScroll
         dataLength={videos.length}
         next={loadMore}
-        height={'400px'}
+        height={'270px'}
         hasMore={true}
         loader={spinner}
-        scrollThreshold={0.9}>
+        scrollThreshold={0.9}
+        className={classes.Scroll}
+        >
           <VideoList videos={videos}/>  
        
 
@@ -80,11 +82,7 @@ const spinner= <Spinner></Spinner>
     </div>
    
     <div style={{marginTop:'30px'}}>
-    <img onClick={ModalShow} src={YouTube} alt="search" style={{
-                paddingLeft:'50px',
-                height:'50px',
-                width:'50px'
-            }}>
+    <img onClick={ModalShow} src={YouTube} alt="search" className={classes.Img}>
               
             </img>
     </div>

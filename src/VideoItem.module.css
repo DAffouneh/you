@@ -7,14 +7,17 @@
 
 .Img 
 {
-    height:150px;
-    width:150px
+    box-sizing: border-box;
+    height:95px;
+    width:175px;
+    display: -moz-box;
+    margin-top: 10px;
+    outline: #A28ECE;
 }
 
 .Title
 {
-    width:150px;
-    border-bottom : 1px solid;
+    width:175px;
     padding-bottom: 5px;
     padding-top: 10px;
     overflow: hidden;
@@ -26,5 +29,15 @@
 }
 .Year
 {
-    
+    color: rosybrown;
+    font-weight: 10;
+
 }
+.Text
+{
+    margin: 0px;
+    color: #C9C9C9;
+    font-size: 10px;
+
+}
+.Img:focus {outline: #A28ECE;}

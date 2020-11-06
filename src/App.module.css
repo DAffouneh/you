@@ -1,0 +1,31 @@
+
+
+.OuterDiv 
+{
+    height:370px;
+    padding-left: 10px;
+}
+
+.InnerDiv 
+{
+    padding-left:55px
+}
+ .Scroll {
+height: 348px;
+overflow: hidden;
+margin: 0;
+padding: 10px
+ }
+
+ .Scroll::-webkit-scrollbar {
+    display: none;
+}
+
+.Img 
+{
+    
+        padding-left:50px;
+        height:50px;
+        width:50px;
+}
+
