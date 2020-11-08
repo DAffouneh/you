@@ -7,19 +7,21 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import Spinner from "./Spinner";
 import YouTube from "./youtube.png";
 import classes from "./App.module.css";
+import VideoDetail from "./VideoDetail";
 const App = () => {
   const KEY = "AIzaSyCZa0nWUFbK1wvzcoTnrsQ6E0QEwjg06ng";
   const [pageToken, setPageToken] = useState("CAoQAA");
   const [videos, setVideos] = useState([]);
   const [term, setTerm] = useState("");
   const [show, setShow] = useState(false);
+  const [selectedVideo, setSelectedVideo] = useState(null);
 
   useEffect(() => {
     searchHandler(term);
   }, []);
 
   const searchHandler = (termFromSearchBar) => {
-    console.log("hiiiii");
+    // console.log("hiiiii");
     setTerm(termFromSearchBar);
     axios
       .get(
@@ -28,8 +30,8 @@ const App = () => {
       .then((res) => {
         setPageToken(res.data.nextPageToken);
         setVideos([...videos, ...res.data.items]);
-        console.log(res);
-        console.log(pageToken);
+        // console.log(res);
+        //  console.log(pageToken);
       });
   };
 
@@ -45,6 +47,9 @@ const App = () => {
 
   const modalremovalHandler = () => {
     setShow(false);
+  };
+  const handleVideoSelect = (video) => {
+    setSelectedVideo(video);
   };
 
   const spinner = <Spinner></Spinner>;
@@ -65,7 +70,7 @@ const App = () => {
           scrollThreshold={0.9}
           className={classes.Scroll}
         >
-          <VideoList videos={videos} />
+          <VideoList videos={videos} handleVideoSelect={handleVideoSelect} />
         </InfiniteScroll>
       </Modal>
       <div style={{ marginLeft: "34px", marginTop: "3px" }}>
@@ -76,6 +81,7 @@ const App = () => {
           className={classes.Img}
         ></img>
       </div>
+      <VideoDetail video={selectedVideo} />
     </div>
   );
 };
