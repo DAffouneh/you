@@ -1,3 +1,4 @@
+import { PinDropSharp } from "@material-ui/icons";
 import React from "react";
 import classes from "./VideoItem.module.css";
 
@@ -34,11 +35,11 @@ const VideoItem = ({ video, handleVideoSelect }) => {
       display = <p className={classes.Text}>{numberOfYears} year ago</p>;
     else display = <p className={classes.Text}>{numberOfYears} years ago</p>;
   }
+  const selected = () => {
+    handleVideoSelect(video);
+  };
   return (
-    <div
-      onClick={() => handleVideoSelect(video)}
-      className={classes.VedioContainer}
-    >
+    <div onClick={selected} className={classes.VedioContainer}>
       <img className={classes.Img} src={video.snippet.thumbnails.medium.url} />
       <div className={classes.Title}>{video.snippet.channelTitle}</div>
       <div className={classes.Year}> {display}</div>

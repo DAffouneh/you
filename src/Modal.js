@@ -3,6 +3,8 @@ import classes from "./Modal.module.css";
 import Backdrop from "./Backdrop";
 import classes1 from "./App.module.css";
 const Modal = (props) => {
+  // console.log(props.selectedVideo);
+
   return (
     <div>
       {" "}

@@ -9,12 +9,13 @@ import YouTube from "./youtube.png";
 import classes from "./App.module.css";
 import VideoDetail from "./VideoDetail";
 const App = () => {
-  const KEY = "AIzaSyCZa0nWUFbK1wvzcoTnrsQ6E0QEwjg06ng";
+  const KEY = "AIzaSyCW6VcFoF5IRQ-aYB97l-Dw6k5kpKc0X54";
   const [pageToken, setPageToken] = useState("CAoQAA");
   const [videos, setVideos] = useState([]);
   const [term, setTerm] = useState("");
   const [show, setShow] = useState(false);
   const [selectedVideo, setSelectedVideo] = useState(null);
+  const [showVideo, setShowVideo] = useState(false);
 
   useEffect(() => {
     searchHandler(term);
@@ -43,6 +44,7 @@ const App = () => {
 
   const ModalShow = () => {
     setShow(!show);
+    setShowVideo(false);
   };
 
   const modalremovalHandler = () => {
@@ -50,15 +52,23 @@ const App = () => {
   };
   const handleVideoSelect = (video) => {
     setSelectedVideo(video);
+    setShowVideo(true);
   };
-
   const spinner = <Spinner></Spinner>;
-  return (
-    <div className={classes.OuterDiv}>
+  let display = null;
+  if (showVideo) {
+    display = (
+      <div style={{ marginLeft: "64px", marginBottom: "20px" }}>
+        <VideoDetail video={selectedVideo} />
+      </div>
+    );
+  } else {
+    display = (
       <Modal
         style={{ borderRadius: 100 }}
         show={show}
         modalClosed={modalremovalHandler}
+        video={selectedVideo}
       >
         <SearchBar clickSearchHandeler={searchHandler}></SearchBar>
         <InfiniteScroll
@@ -73,6 +83,12 @@ const App = () => {
           <VideoList videos={videos} handleVideoSelect={handleVideoSelect} />
         </InfiniteScroll>
       </Modal>
+    );
+  }
+  return (
+    <div className={classes.OuterDiv}>
+      {display}
+
       <div style={{ marginLeft: "34px", marginTop: "3px" }}>
         <img
           onClick={ModalShow}
@@ -81,9 +97,7 @@ const App = () => {
           className={classes.Img}
         ></img>
       </div>
-      <VideoDetail video={selectedVideo} />
     </div>
   );
 };
-
 export default App;
