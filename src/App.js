@@ -9,7 +9,7 @@ import YouTube from "./youtube.png";
 import classes from "./App.module.css";
 import VideoDetail from "./VideoDetail";
 const App = () => {
-  const KEY = "AIzaSyCW6VcFoF5IRQ-aYB97l-Dw6k5kpKc0X54";
+  const KEY = "AIzaSyBOJQMTdCH68pZf16IFjh7VbQlATblSsIo";
   const [pageToken, setPageToken] = useState("CAoQAA");
   const [videos, setVideos] = useState([]);
   const [term, setTerm] = useState("");
@@ -23,6 +23,7 @@ const App = () => {
 
   const searchHandler = (termFromSearchBar) => {
     // console.log("hiiiii");
+    setVideos([]);
     setTerm(termFromSearchBar);
     axios
       .get(
@@ -30,16 +31,24 @@ const App = () => {
       )
       .then((res) => {
         setPageToken(res.data.nextPageToken);
-        setVideos([...videos, ...res.data.items]);
+        setVideos([ ...res.data.items]);
         // console.log(res);
         //  console.log(pageToken);
       });
   };
 
   const loadMore = () => {
-    setTimeout(() => {
-      searchHandler(term);
-    }, 1500);
+
+    axios
+      .get(
+        `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=8&order=viewCount&pageToken=${pageToken}&q=${term}&type=video&key=${KEY}`
+      )
+      .then((res) => {
+        setPageToken(res.data.nextPageToken);
+        setVideos([...videos, ...res.data.items]);
+        // console.log(res);
+        //  console.log(pageToken);
+      });
   };
 
   const ModalShow = () => {
@@ -54,6 +63,8 @@ const App = () => {
     setSelectedVideo(video);
     setShowVideo(true);
   };
+
+
   const spinner = <Spinner></Spinner>;
   let display = null;
   if (showVideo) {
@@ -70,7 +81,10 @@ const App = () => {
         modalClosed={modalremovalHandler}
         video={selectedVideo}
       >
-        <SearchBar clickSearchHandeler={searchHandler}></SearchBar>
+        <div > 
+          <SearchBar clickSearchHandeler={searchHandler} term={term} ></SearchBar>
+        </div>
+      
         <InfiniteScroll
           dataLength={videos.length}
           next={loadMore}
@@ -88,7 +102,7 @@ const App = () => {
   return (
     <div className={classes.OuterDiv}>
       {display}
-
+     {/*TODO: basharQ - change inline style to classes*/}
       <div style={{ marginLeft: "34px", marginTop: "3px" }}>
         <img
           onClick={ModalShow}

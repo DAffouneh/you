@@ -1,31 +1,41 @@
-.Button 
-{
-    height: 34px;
-    width: 91px;
-    background-color: #8E7DCE;
-    border: 0;
-    color: white;
-
+.Button {
+  height: 34px;
+  width: 91px;
+  background-color: #8e7dce;
+  border: 0;
+  color: white;
 }
-Button:focus { outline: none; }
+Button:focus {
+  outline: none;
+}
 
 .Input {
-        width:442px;
-        height: 32px;
-        border: 0;
-        border-bottom: 1px solid #B2B2B2;
-        margin-bottom: 10px;
-        margin-right: 20px;
-        
-
+  width: 442px;
+  height: 32px;
+  border: 0;
+  border-bottom: 1px solid #b2b2b2;
+  margin-bottom: 10px;
+  margin-right: 20px;
+  position: relative;
+  padding-left: 20px;
 }
-Input:focus { outline: none; }
+Input:focus {
+  outline: none;
+}
 
 .Div {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 0;
+  margin-left: 10px;
+  padding: 0;
+}
 
-    display:flex;
-     flex-direction:row;
-     margin-bottom: 0;
-     margin-left: 10px;    
-     padding: 0;
-    }
+.SearchImg {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  z-index: 400;
+  top: 40px;
+  top: 20px;
+}
