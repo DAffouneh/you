@@ -31,14 +31,13 @@ const App = () => {
       )
       .then((res) => {
         setPageToken(res.data.nextPageToken);
-        setVideos([ ...res.data.items]);
+        setVideos([...res.data.items]);
         // console.log(res);
         //  console.log(pageToken);
       });
   };
 
   const loadMore = () => {
-
     axios
       .get(
         `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=8&order=viewCount&pageToken=${pageToken}&q=${term}&type=video&key=${KEY}`
@@ -64,27 +63,28 @@ const App = () => {
     setShowVideo(true);
   };
 
-
   const spinner = <Spinner></Spinner>;
   let display = null;
   if (showVideo) {
     display = (
-      <div style={{ marginLeft: "64px", marginBottom: "20px" }}>
+      <div className={classes.VideoDiv}>
         <VideoDetail video={selectedVideo} />
       </div>
     );
   } else {
     display = (
       <Modal
-        style={{ borderRadius: 100 }}
+        //  style={{ borderRadius: 100 }}
         show={show}
         modalClosed={modalremovalHandler}
-        video={selectedVideo}
       >
-        <div > 
-          <SearchBar clickSearchHandeler={searchHandler} term={term} ></SearchBar>
+        <div>
+          <SearchBar
+            clickSearchHandeler={searchHandler}
+            term={term}
+          ></SearchBar>
         </div>
-      
+
         <InfiniteScroll
           dataLength={videos.length}
           next={loadMore}
@@ -102,8 +102,8 @@ const App = () => {
   return (
     <div className={classes.OuterDiv}>
       {display}
-     {/*TODO: basharQ - change inline style to classes*/}
-      <div style={{ marginLeft: "34px", marginTop: "3px" }}>
+      {/*TODO: basharQ - change inline style to classes*/}
+      <div className={classes.ImgDiv}>
         <img
           onClick={ModalShow}
           src={YouTube}

@@ -1,5 +1,5 @@
 import React from "react";
-import Spinner from "./Spinner";
+import classes from "./VideoDetail.module.css";
 const VideoDetail = ({ video }) => {
   if (!video) {
     return <div></div>;
@@ -10,7 +10,7 @@ const VideoDetail = ({ video }) => {
   return (
     <div>
       <iframe
-        style={{ height: "314px", width: "550px", margin: "10px" }}
+        className={classes.Frame}
         src={videoSrc}
         allowFullScreen
         title="Video player"

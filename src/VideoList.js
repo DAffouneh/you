@@ -1,5 +1,6 @@
 import React from "react";
 import VideoItem from "./VideoItem";
+import classes from "./VideoList.module.css";
 const VideoList = ({ videos, handleVideoSelect }) => {
   const videoItems = videos.map((video) => {
     return (
@@ -9,17 +10,8 @@ const VideoList = ({ videos, handleVideoSelect }) => {
     );
   });
   return (
-    <div style={{ display: "block" }}>
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          flexWrap: "wrap",
-          justifyContent: "space-between",
-        }}
-      >
-        {videoItems}
-      </div>
+    <div className={classes.OuterDiv}>
+      <div className={classes.InnerDiv}>{videoItems}</div>
     </div>
   );
 };

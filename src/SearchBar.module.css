@@ -39,3 +39,17 @@ Input:focus {
   top: 40px;
   top: 20px;
 }
+
+.CancelImg {
+  height: 10px;
+  width: 10px;
+  margin-top: 15px;
+  margin-left: -39px;
+  margin-right: 26px;
+  z-index: 100;
+}
+
+.InnerDiv {
+  display: flex;
+  flex-direction: row;
+}

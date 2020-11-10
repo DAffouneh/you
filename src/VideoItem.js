@@ -15,9 +15,9 @@ const VideoItem = ({ video, handleVideoSelect }) => {
   let numberOfMounths = currentMonth - months;
   let days = publishTime.substring(8, 10);
   let numberOfDays = currentDate - days;
-  if (numberOfYears == 0) {
-    if (numberOfMounths == 0) {
-      if (numberOfDays == 0) {
+  if (numberOfYears === 0) {
+    if (numberOfMounths <= 0) {
+      if (numberOfDays <= 0) {
         display = <p className={classes.Text}> Today</p>;
       } else {
         if (numberOfDays == 1)
