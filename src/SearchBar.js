@@ -4,7 +4,6 @@ import classes from "./SearchBar.module.css";
 import Cancel from "./cancel.png";
 const SearchBar = (props) => {
   const [term, setTerm] = useState(props.term);
-  // const [Iterm, setTerm] = useState("Tap to search...");
   const changeHandel = (event) => {
     setTerm(event.target.value);
   };
@@ -16,7 +15,6 @@ const SearchBar = (props) => {
     setTerm("");
   };
   let cancel = null;
-  console.log(term);
   if (term !== "") {
     cancel = (
       <img
@@ -27,11 +25,6 @@ const SearchBar = (props) => {
     );
   }
 
-  let url = false;
-  if (`^term?https?:\/\/[-_.!~*'()a-zA-Z0-9;\/?:\@&=+\$,%#]+$`) {
-    url = true;
-  }
-  console.log(url);
   return (
     <div className={classes.Div}>
       <div className={classes.InnerDiv}>

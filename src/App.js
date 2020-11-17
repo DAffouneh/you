@@ -9,7 +9,7 @@ import YouTube from "./youtube.png";
 import classes from "./App.module.css";
 import VideoDetail from "./VideoDetail";
 const App = () => {
-  const KEY = "AIzaSyBOJQMTdCH68pZf16IFjh7VbQlATblSsIo";
+  const KEY = "AIzaSyDqQSbO1h5yrwt4vvl5C1XKOCweE86t294";
   const [pageToken, setPageToken] = useState("CAoQAA");
   const [videos, setVideos] = useState([]);
   const [term, setTerm] = useState("");
@@ -22,7 +22,6 @@ const App = () => {
   }, []);
 
   const searchHandler = (termFromSearchBar) => {
-    // console.log("hiiiii");
     setVideos([]);
     setTerm(termFromSearchBar);
     axios
@@ -32,8 +31,6 @@ const App = () => {
       .then((res) => {
         setPageToken(res.data.nextPageToken);
         setVideos([...res.data.items]);
-        // console.log(res);
-        //  console.log(pageToken);
       });
   };
 
@@ -45,8 +42,7 @@ const App = () => {
       .then((res) => {
         setPageToken(res.data.nextPageToken);
         setVideos([...videos, ...res.data.items]);
-        // console.log(res);
-        //  console.log(pageToken);
+      
       });
   };
 
@@ -74,7 +70,6 @@ const App = () => {
   } else {
     display = (
       <Modal
-        //  style={{ borderRadius: 100 }}
         show={show}
         modalClosed={modalremovalHandler}
       >
@@ -102,7 +97,6 @@ const App = () => {
   return (
     <div className={classes.OuterDiv}>
       {display}
-      {/*TODO: basharQ - change inline style to classes*/}
       <div className={classes.ImgDiv}>
         <img
           onClick={ModalShow}
