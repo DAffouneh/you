@@ -24,7 +24,13 @@ const SearchBar = (props) => {
       ></img>
     );
   }
-
+  const onKeyPressedHandler = (event) => {
+    if (event.key === "Enter") {
+      clickHandel(event);
+    } else if (event.key === "Escape") {
+      deleteSearchValue();
+    }
+  };
   return (
     <div className={classes.Div}>
       <div className={classes.InnerDiv}>
@@ -35,6 +41,7 @@ const SearchBar = (props) => {
           placeholder={"Tap to search..."}
           value={term}
           onChange={changeHandel}
+          onKeyPress={onKeyPressedHandler}
         ></input>
         {cancel}
       </div>
